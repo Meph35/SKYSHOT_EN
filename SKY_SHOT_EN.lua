@@ -5573,7 +5573,7 @@ gx.set_back_text("|⬅️| Back")
 
 gx.add_menu({
 
-	title = "Welcome to SKYSHOT :",
+	title = "Contact me: SKYSHOT#2304",
 	name = "main",
 	menu = {
 		{"[⬆️] Break wall: {gx:settings.wdistance}", {pmove, {"{gx:settings.wdistance}"}}},
@@ -5582,7 +5582,7 @@ gx.add_menu({
 		{"[🌎] Go to", {_goto}},
 		{"[🌀] Change_Map", {changemap}},
 		{"[💫] Utilities", {gx.open_menu, {"utilities"}}},
-		{"[🔧]  Developer", {gx.open_menu, {"Developer"}}},
+		--{"[🔧]  Developer", {gx.open_menu, {"Developer"}}},
 		{"[📍]  Show location", {show_location}}
 		--{"[👥] Farming with friends", {gx.open_menu, {"farmmenu"}}},
 		--{"[💫] Spells Hacks", {gx.open_menu, {"spellsmenu"}}},
@@ -5617,7 +5617,6 @@ gx.add_menu({
 	title = " Developer mod: ",
 	name = "Developer",
 	menu = {
-		{"[🌟] Ultra rapid farm!!", {ydks}},
 		{"[📜] Show Offsets", {show_offsets}},
 		{"[💾] Offsets scan", {find_all_offsets}},
 		{"[✏️] Write coordinat ", {gx.open_menu, {"coordinates"}}}
