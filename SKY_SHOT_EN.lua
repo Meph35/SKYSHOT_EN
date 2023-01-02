@@ -1,4 +1,4 @@
-gg.alert("Happy new year me bross!!")
+gg.alert("welcome Esra Tescan 😋!!")
 		 
 scriptv = {process = {live = 'com.tgc.sky.android', canvas = "git.artdeell.skymodloader", beta = "com.tgc.sky.android.test.gold"}}
 gameinfo = gg.getTargetInfo()
