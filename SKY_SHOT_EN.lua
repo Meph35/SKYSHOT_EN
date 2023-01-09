@@ -123,7 +123,7 @@ jiasu(90)--毫秒单位--改了这行变快的
   gg.sleep(1000)
   set_game_speed(1)
 
-  gg.alert("Farming complete ,congratulation!!")
+  gg.toast("Farming complete ,congratulation!!")
 end
 
 offsets = {
@@ -5574,7 +5574,7 @@ gx.vars.settings = {
 	wdistance = settings.wdistance,
 	w = 0
 }
-gx.set_signs({[false] = '¦❌¦', [true] = '¦🎅¦'})
+gx.set_signs({[false] = '¦❌¦', [true] = '¦😼¦'})
 gx.set_back_text("|⬅️| Back")
 
 gx.add_menu({
