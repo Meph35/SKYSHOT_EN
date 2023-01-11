@@ -492,12 +492,12 @@ maps = {
 	{"!!! Orbit 2 !!!", "OrbitEnd"},
 	{"!!! Heaven !!!", "CandleSpaceEnd"},
 	{"Credits map", "Credits"},
-	{"Eyes of Child", "AP16EyesOfChild"},
-	{"Runaway", "AP16Runaway"},
-	{"Soft Inside", "AP16SoftInside"},
-	{"The Seed", "AP16TheSeed"},
-	{"Void Space", "AP16VoidSpace"},
-	{"Warrior", "AP16Warrior"}
+	{"🆕️ Aurora collaboration", "AP16Runaway"},
+	{"🆕️ Aurora collaboration2", "AP16SoftInside"},
+	{"🆕️ Aurora collaboration3", "AP16TheSeed"},
+	{"🆕️ Aurora collaboration4", "AP16EyesOfChild"},
+	{"🆕️ Aurora collaboration5", "AP16VoidSpace"},
+	{"🆕️ Aurora collaboration6 0.19.5~", "AP16FlightMechanic"}
 }
 
 -- AUTO CANDLE RUN POINTS --
@@ -5735,7 +5735,7 @@ gx.add_menu({
 	name = "utilities",
 	menu = {
 		{"[🔥] Auto-burn {gxsign}", {set_autoburn, {"{gxbool}"}}},
-		{"[🌟] Ultra rapid farm!!", {ydks}},
+		--{"[🌟] Ultra rapid farm!!", {ydks}},
 		{"[👥]Friendsnode and Chats", {node}},
 		{"[🔋]floating and charge", {wing_charge}},
 		--{"[😍]Super jump {gxsign}", {jumping}},
