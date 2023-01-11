@@ -127,13 +127,13 @@ jiasu(90)--毫秒单位--改了这行变快的
 end
 
 offsets = {
-	ptoplayer = 0x1535BC8,
-	pos_off = 0x45EC00, --pos_x
-	ptoentity = 0x151D4C0,
-	ptonentity = 0x5D579C,
-	curmap_off = -0x16D2A5C,
-	plants = 0xDAE818,
-	gamespeed_off = -0x160BB78,
+	ptoplayer = 0x1590D98,
+	pos_off = 0x471E40, --pos_x
+	ptoentity = 0x15784A0,
+	ptonentity = 0x5F35BC,
+	curmap_off = -0x1708DAC,
+	plants = 0xE3B478,
+	gamespeed_off = -0x16356C8,
 	chat = 0x5BC25C,
 	magic = 0x4681B0,
 	ptoemotes = 0xA42AF4,
@@ -162,7 +162,7 @@ offsets = {
 	props_off = 0x45E104,
 	famount_off = 0x45E104 + 0x15D0,
 	portal_off = 0x40EB08,
-	portal2_off = -0x7820,
+	portal2_off = -0x253C0,
 	vcandles = 0x4E62B4,
 	vcandles_dist = 0x70,
 	pchat = 0xB6B3725,
