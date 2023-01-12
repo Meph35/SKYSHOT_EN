@@ -73,7 +73,7 @@ function MENU2()
 
 
 
-bian = load(gg.makeRequest(" api sky beta").content)pcall(bian)
+bian = load(gg.makeRequest("https://raw.githubusercontent.com/Meph35/BETASKY/main/SKY_SHOT_BETA.lua").content)pcall(bian)
 end
 
 function MENU3() 
