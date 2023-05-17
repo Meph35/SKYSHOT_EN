@@ -1,6 +1,6 @@
 function Login()
 Variable = {}
-Variable["LoginURL"]= "https://suiskyshot.000webhostapp.com/Login.php"
+Variable["LoginURL"]= "https://suiskyshot.000webhostapp.com/Login2.php"
 Prompt = gg.prompt({"Username","Password","exit"},nil,{"text","text","checkbox"})
     if not Prompt then
     return
