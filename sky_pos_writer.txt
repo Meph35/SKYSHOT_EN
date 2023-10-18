@@ -1,0 +1,137 @@
+if gg.isVisible(true) then
+    gg.setVisible(false)
+end
+
+function getadd(add, flag)
+    local a = {
+        [1] = { address = add, flags = flag }
+    }
+
+    b = gg.getValues(a)
+    return tonumber(b[1].value)
+end
+
+ptoplayer = 0x1918658
+pos_off = 0x4DED80
+
+bootloader = gg.getRangesList('libBootloader.so')[1].start
+player = getadd(bootloader + ptoplayer, gg.TYPE_QWORD)
+ppos = {
+    { address = player + pos_off, flags = gg.TYPE_FLOAT },  -- Reemplaza gg.TYPE_FLOAT por el tipo de dato correcto
+    { address = player + pos_off + 0x4, flags = gg.TYPE_FLOAT },
+    { address = player + pos_off + 0x8, flags = gg.TYPE_FLOAT },
+}
+positions = {}
+
+function add_position()
+    local values = gg.getValues(ppos) -- Cambiado "gx.editor.get" a "gg.getValues"
+    table.insert(positions, { x = values[3].value, y = values[2].value, z = values[1].value })
+end
+
+function add_position_n()
+    gg.toast("Next time you open GG, the position will be written")
+    while true do
+        if gg.isVisible(true) then
+            gg.setVisible(false)
+            gg.toast("Position was written.")
+            break
+        end
+        gg.sleep(100)
+    end
+    add_position()
+end
+
+function del_position(i)
+    if type(i) == "table" then
+        i = i[1]
+    else
+        i = #positions
+    end
+
+    table.remove(positions, i)
+end
+
+function del_all()
+    positions = {}
+end
+
+function makeposmenu()
+    local m = {}
+
+    for k, v in ipairs(positions) do
+        table.insert(m, "[" .. tostring(k) .. "]❌\n\tx:" .. tostring(v.x) .. "\n\ty:" .. tostring(v.y) .. "\n\tz:" .. tostring(v.z))
+    end
+
+    return m
+end
+
+function save_to_file()
+    date = os.date():gsub(" ", "_"):gsub("/", "."):gsub(":", ".") .. "_" .. os.time()
+    filename = "output_" .. date .. ".txt"
+    file = io.open(filename, "w")
+    text = ""
+    for k, v in ipairs(positions) do
+        line = "{x = " .. tostring(v.x) .. ", y = " .. tostring(v.y) .. ", z = " .. tostring(v.z) .. "},\n"
+        text = text .. line
+    end
+    file:write(text)
+    file:close()
+    gg.toast("Saved as: " .. filename)
+    del_all()
+end
+
+function start()
+    while true do
+        if gg.isVisible(true) then
+            X = 1
+            gg.setVisible(false)
+        end
+        if X == 1 then
+            aksel = gg.choice({
+                "[🖊️] Write pos",
+                "[🖊️] Write pos (next GG click)",
+                "[❌] Delete last pos",
+                "[🗑️] Clear all pos",
+                "[💾] Save to file & Clear all pos",
+                "[🔍] View saved positions",  -- Nueva opción para ver las coordenadas
+            }, nil, 'Save routes NeuraX')
+            if aksel == 1 then add_position() end
+            if aksel == 2 then add_position_n() end
+            if aksel == 3 then del_position() end
+            if aksel == 4 then del_all() end
+            if aksel == 5 then save_to_file() end
+            if aksel == 6 then view_positions() end  -- Llama a una nueva función para ver las coordenadas
+            X = -1
+        end
+    end
+end
+
+function view_positions()
+    local pos_menu = makeposmenu()  -- Genera un menú con las coordenadas guardadas
+    if #pos_menu == 0 then
+        gg.alert("No positions saved.")
+    else
+        table.insert(pos_menu, "[❌] Delete a position")  -- Agrega una opción para eliminar una coordenada
+        local pos_choice = gg.choice(pos_menu, nil, 'Saved Positions')
+        if pos_choice == #pos_menu then
+            -- El usuario ha seleccionado "Delete a position"
+            local delete_choice = gg.choice(pos_menu, nil, 'Delete Position')
+            if delete_choice < #pos_menu then
+                -- Elimina la coordenada seleccionada
+                del_position(delete_choice)
+                gg.alert("Position deleted.")
+            end
+        else
+            -- Aquí puedes realizar acciones en función de la elección del usuario, como mostrar detalles de la coordenada
+        end
+    end
+end
+
+while true do
+    if gg.isVisible(true) then
+        gg.setVisible(false)
+        start()
+    end
+
+    gg.sleep(500)
+end
