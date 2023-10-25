@@ -1,1 +1,0 @@
-gg.toast("I'm solving a problem, please wait") 
