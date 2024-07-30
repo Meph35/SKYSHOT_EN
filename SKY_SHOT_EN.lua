@@ -1,0 +1,1 @@
+gg.alert("Skyshot is only available from the Official discord server")
